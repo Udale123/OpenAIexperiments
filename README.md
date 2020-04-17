@@ -6,3 +6,5 @@ This uses openAI.gym to as the environment for training.
 
 https://gym.openai.com/envs/CartPole-v1/
 
+Run Simulation-CartPole.py to see training
+
