@@ -6,9 +6,9 @@ import math
 
 
 class NeuralNetwork:
-    def __init__(self, layers=[1, 1, 1]):
+    def __init__(self, layers=[1, 1, 1],activation='sigmoid'):
         self.layers = layers
-
+        self.activation = activation
         # output of each neuron
         self.NeuronOutput = [[] for i in range(len(layers))]
         for i in range(len(layers)):
@@ -26,7 +26,10 @@ class NeuralNetwork:
 
     # Activation function for the NN, using sigmoid here
     def activate(self, value):
-        return 1 / (1 + math.exp(-value))
+        if self.activation == 'sigmoid':
+            return 1 / (1 + math.exp(-value))
+        elif self.activation == 'tanh':
+            return math.tanh(value)
 
     # Get output of the network given input vector
     def FeedForward(self, inputs):
@@ -59,7 +62,7 @@ class NeuralNetwork:
         return Child
 
     def cross_over(self, spouse):
-        child = NeuralNetwork(self.layers)
+        child = NeuralNetwork(self.layers,activation=self.activation)
         for i in range(len(child.NeuronBias)):
             for j in range(len(child.NeuronBias[i])):
                 if np.random.rand() < 0.5:

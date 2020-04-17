@@ -16,8 +16,8 @@ outputs = 1  # one output to 0 or 1
 layers = [inputs, int((inputs + outputs) / 2), outputs]
 
 # simulation parameters
-generation_population = 6
-max_time_steps = 50
+generation_population = 20
+max_time_steps = 200
 number_of_generations = 40
 mutation_rate = 0.05
 
