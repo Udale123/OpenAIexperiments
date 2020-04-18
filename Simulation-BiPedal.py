@@ -40,7 +40,7 @@ for gen in range(number_of_generations):
         observation = env.reset()
         for t in range(max_time_steps):
             env.render()
-            action = (current_population[pop].FeedForward(observation))
+            action = (current_population[pop].feed_forward(observation))
             observation, reward, done, info = env.step(action)
             current_scores[pop] += reward
             if done:

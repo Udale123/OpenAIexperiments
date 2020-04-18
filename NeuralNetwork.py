@@ -1,7 +1,6 @@
 import numpy as np
 import math
 
-
 # There will be one hidden layer in the neural network.
 
 
@@ -32,7 +31,7 @@ class NeuralNetwork:
             return math.tanh(value)
 
     # Get output of the network given input vector
-    def FeedForward(self, inputs):
+    def feed_forward(self, inputs):
         # input inputs
         self.NeuronOutput[0] = [math.tanh(inputs[i] + self.NeuronBias[0][i]) for i in range(len(self.NeuronOutput[0]))]
         for i in range(len(self.NeuronOutput[1:])):
@@ -74,8 +73,3 @@ class NeuralNetwork:
             child.weights[i] = np.where(r, self.weights[i], spouse.weights[i])
         return child
 
-
-#a = NeuralNetwork([7, 10, 6])
-#print(a.NeuronBias)
-#a.Mutate()
-#print(a.FeedForward([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2857142857142857]))

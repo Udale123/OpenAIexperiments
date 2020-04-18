@@ -1,7 +1,9 @@
 import gym
-import NeuralNetwork as nn
+import NeuralNetwork2 as nn
 import numpy as np
+import time
 
+t0 = time.time()
 # choose enviroment to learn about
 
 env = gym.make('CartPole-v0')
@@ -40,7 +42,7 @@ for gen in range(number_of_generations):
         observation = env.reset()
         for t in range(max_time_steps):
             env.render()
-            action = round((current_population[pop].FeedForward(observation)[0]))
+            action = int(round((current_population[pop].feed_forward(observation)[0])))
             observation, reward, done, info = env.step(action)
             current_scores[pop] += reward
             if done:
@@ -63,3 +65,4 @@ for gen in range(number_of_generations):
 env.close()
 
 print(best_scores)
+print(time.time()-t0)
